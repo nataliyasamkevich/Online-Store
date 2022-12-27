@@ -17,6 +17,7 @@
     "@typescript-eslint/eslint-plugin": "^5.47.0",
     "@typescript-eslint/parser": "^5.47.0",
     "autoprefixer": "^10.4.12",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.2",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
@@ -34,5 +35,8 @@
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1",
     "workbox-webpack-plugin": "^6.5.4"
+  },
+  "dependencies": {
+    "normalize-scss": "^7.0.1"
   }
 }

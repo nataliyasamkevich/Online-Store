@@ -4,6 +4,7 @@ const path = require('path');
 const isProduction = process.env.NODE_ENV == 'production';
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 
 const stylesHandler = 'style-loader';
@@ -16,11 +17,17 @@ const config = {
   },
   devServer: {
     open: true,
+    hot: true,
     host: 'localhost',
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: './src/assets', to: 'assets' },
+      ],
     }),
 
     // Add your plugins here
@@ -42,7 +49,7 @@ const config = {
         use: [stylesHandler, 'css-loader', 'postcss-loader'],
       },
       {
-        test: /\.(ttf|woff|woff2|eot)$/i,
+        test: /\.(ttf|woff|woff2|eot|otf)$/i,
         type: 'asset/resource',
         generator: {
           filename: 'assets/fonts/[name][ext]',

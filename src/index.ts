@@ -1,5 +1,4 @@
-import App from './components/app/app';
-import './global.css';
+import App from './app';
+import './main.scss';
 
-const app = new App();
-app.run();
+App.run(document.body);
