@@ -73,7 +73,7 @@ const itemsInfo: ItemInfo[] = [
     description:
       'Quai Saint-Bernard, near the Jardin des Plantes, the first couples arrive at the Tino-Rossi garden. As the night falls, the number of dancers increases and the bleachers fill up. Under the silver moon and the lights of the tourist barges that criss-cross the quay a few metres away, the bodies mingle to the rhythm of the music. It is then that two glances cross paths. A discreet invitation brings them to the centre of the track. As if they were carried away, they dance in the heat of the night. From this hand-to-hand seduction punctuated by knowing smiles, they end up slipping away to give free flow to more carnal desires. In the early morning, the sheets give off a scent of sleepless nights, mischievous and lascivious embraces.',
     thumbnail:
-      'https://raw.githubusercontent.com/haslie22/online-store-images/main/store-images/amouage-overture-woman-1.webp',
+      'https://raw.githubusercontent.com/haslie22/online-store-images/main/store-images/bdk-parfums-gris-charnel-1.webp',
     images: [
       'https://raw.githubusercontent.com/haslie22/online-store-images/main/store-images/bdk-parfums-gris-charnel-1.webp',
       'https://raw.githubusercontent.com/haslie22/online-store-images/main/store-images/bdk-parfums-gris-charnel-2.webp',

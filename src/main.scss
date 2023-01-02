@@ -1,9 +1,18 @@
-@import './styles/base/normalize';
 @import './styles/abstracts/variables';
 @import './styles/abstracts/fonts';
+
+@import './styles/base/normalize';
 @import './styles/base/base';
-@import './styles/layout/header';
+
 @import './styles/components/button';
+@import './styles/components/dropdown';
+@import './styles/components/input';
+
+@import './styles/layout/header';
+@import './styles/layout/footer';
+
+@import './styles/components/settings';
+@import './styles/components/filters';
 @import './styles/components/catalog';
 
 #webpack-dev-server-client-overlay {

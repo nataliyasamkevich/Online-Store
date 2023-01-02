@@ -5,7 +5,7 @@ class Card {
 
   getElement(): HTMLElement {
     const cardContainer = document.createElement('div');
-    cardContainer.classList.add('card');
+    cardContainer.classList.add('card', 'card_grid');
 
     const cardImageContainer = document.createElement('div');
     cardImageContainer.classList.add('card__image');

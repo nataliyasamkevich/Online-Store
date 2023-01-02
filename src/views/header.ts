@@ -7,7 +7,7 @@ class Header {
     this.draw();
   }
 
-  draw() {
+  draw(): void {
     this.container.innerHTML = '';
 
     const headerWrapper = document.createElement('div');

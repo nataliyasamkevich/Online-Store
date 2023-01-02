@@ -5,6 +5,7 @@ class Router {
   private static defaultRoute: Page;
 
   static addRoute(path: string, page: Page) {
+    if (!Router.routeMap) Router.routeMap = {};
     Router.routeMap[path] = page;
   }
 

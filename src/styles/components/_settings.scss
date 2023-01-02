@@ -1,0 +1,36 @@
+.settings {
+  max-width: 1450px;
+  width: 76%;
+  margin-bottom: 50px;
+}
+
+.settings__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.found {
+  font: $font-items-found;
+}
+
+.found__num {
+  margin-left: 10px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  min-width: 730px;
+}
+
+.controls__fields {
+  display: flex;
+  justify-content: space-between;
+  min-width: 640px;
+}
+
+.view {
+  width: 46px;
+  height: 46px;
+}

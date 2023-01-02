@@ -6,7 +6,8 @@
   justify-content: center;
   font: $font-buttons;
   border: 1px solid $font-color-base;
-  transition: all ease-out 0.5s;
+  transition: 0.3s all ease-out;
+  cursor: pointer;
 
   &:hover {
     color: $font-color-sec;

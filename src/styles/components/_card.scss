@@ -1,4 +1,13 @@
-.card {
+.card__name {
+  font: $font-item-card;
+}
+
+.card__price {
+  font: $font-item-card;
+}
+
+// Grid view setting
+.card_grid {
   max-width: 340px;
   width: 100%;
 }
@@ -7,39 +16,42 @@
   width: 100%;
   padding-bottom: 100%;
   background-size: contain;
-  margin-bottom: 30px;
+
+  .card_grid & {
+    margin-bottom: 30px;
+  }
 }
 
-.card__title {
+.card_grid  .card__title {
   margin-bottom: 50px;
 }
 
 .card__brand {
   font: $font-item-card-brand;
   text-transform: uppercase;
-  margin-bottom: 10px;
+
+  .card_grid & {
+    margin-bottom: 10px;
+  }
 }
 
-.card__name {
-  font: $font-item-card;
-}
-
-.card__options {
+.card_grid .card__options {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 }
 
-.card__details {
+.card_grid .card__details {
   min-width: 60px;
 }
 
 .card__volume {
   font: $font-item-card-volume;
   color: $font-color-sec;
-  margin-bottom: 6px;
+
+  .card_grid & {
+    margin-bottom: 6px;
+  }
 }
 
-.card__price {
-  font: $font-item-card;
-}
+// List view setting

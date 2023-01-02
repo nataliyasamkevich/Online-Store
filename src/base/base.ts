@@ -21,4 +21,15 @@ type ItemInfo = {
   images: string[];
 };
 
-export { PerfumeСategory, ItemInfo };
+type Filter = {
+  price: {
+    min?: number;
+    max?: number;
+  };
+};
+
+interface Page {
+  draw(): void;
+}
+
+export { PerfumeСategory, ItemInfo, Filter, Page };
