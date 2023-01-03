@@ -1,6 +1,6 @@
 .catalog {
-  max-width: 1450px;
   width: 76%;
+  flex-grow: 1;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: minmax(532px, min-content);

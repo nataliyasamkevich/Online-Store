@@ -1,7 +1,7 @@
 import { Page } from '../base/base';
-import Catalog from '../views/catalog';
-import Settings from '../views/settings';
-import Filters from '../views/filters';
+import Catalog from './catalog';
+import Settings from './settings';
+import Filters from './filters';
 
 class MainPage implements Page {
   constructor(protected container: HTMLElement) {
@@ -12,6 +12,9 @@ class MainPage implements Page {
     const settingsBar = document.createElement('div');
     settingsBar.classList.add('settings');
     const settings = new Settings(settingsBar);
+
+    const contentContainer = document.createElement('div');
+    contentContainer.classList.add('content-container');
 
     const catalogContainer = document.createElement('div');
     catalogContainer.classList.add('catalog');
@@ -24,7 +27,8 @@ class MainPage implements Page {
     const mainContainer = document.createElement('div');
     mainContainer.classList.add('main__container');
 
-    mainContainer.append(settingsBar, catalogContainer, filterBar);
+    contentContainer.append(filterBar, catalogContainer);
+    mainContainer.append(settingsBar, contentContainer);
     this.container.append(mainContainer);
   }
 }

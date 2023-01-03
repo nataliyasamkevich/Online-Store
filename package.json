@@ -37,6 +37,7 @@
     "workbox-webpack-plugin": "^6.5.4"
   },
   "dependencies": {
-    "normalize-scss": "^7.0.1"
+    "normalize-scss": "^7.0.1",
+    "nouislider": "^15.6.1"
   }
 }

@@ -1,6 +1,11 @@
 @import '../abstracts/variables';
 @import '../abstracts/fonts';
 
+.footer {
+  display: flex;
+  justify-content: center;
+}
+
 .footer__wrapper {
   position: relative;
   width: 100%;

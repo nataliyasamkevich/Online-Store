@@ -13,7 +13,12 @@
 
 @import './styles/components/settings';
 @import './styles/components/filters';
+@import './styles//components/card';
 @import './styles/components/catalog';
+
+@import './styles/pages/main-page';
+
+@import 'nouislider/dist/nouislider.css';
 
 #webpack-dev-server-client-overlay {
   display: none;

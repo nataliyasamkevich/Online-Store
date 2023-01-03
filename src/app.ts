@@ -2,7 +2,7 @@ import CardPage from './views/card';
 import Header from './views/header';
 import Footer from './views/footer';
 import Router from './base/router';
-import MainPage from './views/mainpage';
+import MainPage from './views/main-page';
 
 export const enum PageIds {
   MainPage = '',
