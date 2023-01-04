@@ -1,0 +1,34 @@
+.button {
+  width: 160px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: $font-buttons;
+  border: 1px solid $font-color-base;
+  transition: 0.3s all ease-out;
+  cursor: pointer;
+
+  &:hover {
+    color: $font-color-sec;
+    border: 1px solid $font-color-sec;
+  }
+
+  &.dark {
+    background: $font-color-base;
+    color: $additional-color-bright;
+    border: 1px solid $additional-color-bright;
+
+    &:hover {
+      background: $button-dark-hover-color;
+    }
+  }
+}
+
+#reset {
+  width: 148px;
+}
+
+#copy {
+  width: 130px;
+}

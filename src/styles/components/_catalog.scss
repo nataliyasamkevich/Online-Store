@@ -1,0 +1,9 @@
+.catalog {
+  width: 76%;
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: minmax(532px, min-content);
+  gap: 80px 30px;
+  margin-bottom: 130px;
+}

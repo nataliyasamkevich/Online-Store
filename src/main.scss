@@ -1,0 +1,26 @@
+@import './styles/abstracts/variables';
+@import './styles/abstracts/fonts';
+
+@import './styles/base/normalize';
+@import './styles/base/base';
+
+@import './styles/components/button';
+@import './styles/components/dropdown';
+@import './styles/components/input';
+
+@import './styles/layout/header';
+@import './styles/layout/footer';
+
+@import './styles/components/settings';
+@import './styles/components/filters';
+@import './styles//components/card';
+@import './styles/components/catalog';
+
+@import './styles/pages/main-page';
+
+@import 'nouislider/dist/nouislider.css';
+
+#webpack-dev-server-client-overlay {
+  display: none;
+}
+//TODO: remove before release
