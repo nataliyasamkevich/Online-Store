@@ -32,4 +32,15 @@ interface Page {
   draw(): void;
 }
 
-export { PerfumeСategory, ItemInfo, Filter, Page };
+interface Validatable {
+  value: string;
+  required: true;
+  minLengthCharacters?: number;
+  countWord?: number;
+  minLength?: number;
+  regexp?: RegExp;
+  maxValueMonth?: number;
+  minValueYear?: number;
+}
+
+export { PerfumeСategory, ItemInfo, Filter, Page, Validatable };

@@ -1,0 +1,160 @@
+.modal {
+  position: fixed;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(35, 35, 35, 0.5);
+}
+
+.modal__content {
+  position: relative;
+  background: #FFFFFF;
+  min-width: 1000px;
+  min-height: 700px;
+}
+
+.form-group__close {
+  position: absolute;
+  width: 27px;
+  height: 26px;
+  right: 24px;
+  top: 24px;
+  background-image: url('./assets/svg/cross-big.svg');
+  cursor: pointer;
+}
+
+.form {
+  display: flex;
+  font-size: 40px;
+}
+
+.form-group {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.form-group {
+  flex: 0 1 50%;
+}
+
+.form-group:last-child {
+  flex: 1 1 auto;
+}
+
+.error-message {
+  font: $font-form-group-title;
+
+  color: #ff0000;
+}
+
+.form-group__title {
+  font: $font-form-group-title;
+
+  width: 100%;
+  border-bottom: 1px solid #D9D9D9;
+  border-right: 1px solid #D9D9D9;
+  color: #000000;
+  margin: 0;
+  padding: 50px 0 20px 50px;
+}
+
+.form-group__column {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 50px 120px 50px;
+  border-right: 1px solid #D9D9D9;
+}
+
+.form-group__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 439px;
+}
+
+.form-group__item_small {
+  width: 140px;
+}
+
+.form-group__label {
+  font: $font-form-group-label;
+  color: $font-color-sec;
+}
+
+.form__container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 10px 0 25px;
+}
+
+
+.form-group__input,
+.form-group__textarea {
+  font: $font-form-group-input;
+  color: #000000;
+
+  padding: 11px 26px;
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid $font-color-base;
+  outline: none;
+}
+
+.form-group__textarea {
+  resize: none;
+}
+
+.form-group__input_small {
+  padding: 11px 15px;
+}
+
+.form-group__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 439px;
+}
+
+.card__logo {
+  height: 46px;
+  width: 59px;
+  margin-bottom: 25px;
+  object-fit: contain;
+}
+
+.button-background {
+  position: absolute;
+  margin: 15px;
+  left: 359px;
+  bottom: 22px;
+  background: #FFFFFF;
+
+  width: 330px;
+  height: 76px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-background .button {
+  font: $font-buttons;
+  color: $additional-color-bright;
+
+  width: 300px;
+  height: 46px;
+  left: calc(50% - 300px/2);
+  top: calc(50% - 46px/2);
+  background: $font-color-base;
+  border: 1px solid $font-color-base;
+  cursor: pointer;
+}
