@@ -175,7 +175,7 @@ export class ValidateProjectInput {
   }
 
   private submitUndCloseModal(): void {
-    setTimeout(() => this.modal.classList.add('hidden'), 5000);
+    setTimeout(() => this.modal.classList.add('modal__hidden'), 5000);
     this.formEl.innerHTML = 'Thanks for your order. Redirect to the store after 5 sec'
   }
 
@@ -198,13 +198,13 @@ export class ValidateProjectInput {
     const phoneNumberValidatable: Validatable = {
       value: phoneNumber,
       required: true,
-      regexp: /^[\+][\d\(\)\ -]{7,}\d$/,
+      regexp: /^[\+][\d\(\)\ -]{8,}\d$/,
     }
 
     const emailValidatable: Validatable = {
       value: email,
       required: true,
-      regexp: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+      regexp: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
     }
 
     const addressValidatable: Validatable = {
@@ -212,12 +212,14 @@ export class ValidateProjectInput {
       required: true,
       minLengthCharacters: 5,
       countWord: 3,
+      regexp: /^([0-9a-zA-Z]{5,}){2}[0-9a-zA-Z]{5,}/,
     }
 
     const cardNumberValidatable: Validatable = {
       value: cardNumber,
       required: true,
       minLength: 19,
+      regexp: /^([0-9]{4}){3}[0-9]{4}$/,
     }
 
     const expirationDateValidatable: Validatable = {
@@ -279,7 +281,7 @@ export class ValidateProjectInput {
 
   private closeModal(): void {
     this.formGroupClose.addEventListener('click', () => {
-      this.modal.classList.toggle('hidden');
+      this.modal.classList.toggle('modal__hidden');
     });
   }
 }
