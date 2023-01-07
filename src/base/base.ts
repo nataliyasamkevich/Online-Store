@@ -1,12 +1,13 @@
 const popularityGrade = [1, 2, 3, 4, 5] as const;
-const enum PerfumeСategory {
-  EDP = 'Eau de Parfum',
-  EDT = 'Eau de Toilette',
-  EDC = 'Eau de Cologne',
-  EP = 'Extrait de Parfum',
+enum PerfumeСategory {
+  EDP = 'Eau de Parfum (EDP)',
+  EDT = 'Eau de Toilette (EDT)',
+  EDC = 'Eau de Cologne (EDC)',
+  EP = 'Extrait de Parfum (EP)',
 }
 
 type Popularity = typeof popularityGrade[number];
+
 type ItemInfo = {
   id: number;
   brand: string;
@@ -22,11 +23,13 @@ type ItemInfo = {
 };
 
 type Filter = {
-  price: {
-    min?: number;
-    max?: number;
-  };
+  categories?: string[];
+  brands?: string[];
+  stock?: [number, number];
+  price?: [number, number];
 };
+
+type FilterFields = keyof Filter;
 
 interface Page {
   draw(): void;
@@ -43,4 +46,21 @@ interface Validatable {
   minValueYear?: number;
 }
 
-export { PerfumeСategory, ItemInfo, Filter, Page, Validatable };
+enum URLParameters {
+  categories = 'categories',
+  brands = 'brands',
+  priceMin = 'pricemin',
+  priceMax = 'pricemax',
+  stockMin = 'stockmin',
+  stockMax = 'stockmax',
+}
+
+export {
+  PerfumeСategory,
+  ItemInfo,
+  Filter,
+  FilterFields,
+  Page,
+  Validatable,
+  URLParameters,
+};

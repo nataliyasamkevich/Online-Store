@@ -1,4 +1,4 @@
-class Footer {
+class FooterView {
   constructor(protected container: HTMLElement) {
     this.draw();
   }
@@ -52,4 +52,4 @@ class Footer {
   }
 }
 
-export default Footer;
+export default FooterView;

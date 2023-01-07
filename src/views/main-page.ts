@@ -1,14 +1,17 @@
 import { Page } from '../base/base';
+
 import Catalog from './catalog';
 import Settings from './settings';
-import Filters from './filters';
+import FiltersView from './filters';
 
-class MainPage implements Page {
+class MainPageView implements Page {
   constructor(protected container: HTMLElement) {
-    this.draw();
+    //this.draw();
   }
 
   draw(): void {
+    this.container.innerHTML = '';
+
     const settingsBar = document.createElement('div');
     settingsBar.classList.add('settings');
     const settings = new Settings(settingsBar);
@@ -22,7 +25,7 @@ class MainPage implements Page {
 
     const filterBar = document.createElement('div');
     filterBar.classList.add('filters');
-    const filters = new Filters(filterBar);
+    const filters = new FiltersView(filterBar);
 
     const mainContainer = document.createElement('div');
     mainContainer.classList.add('main__container');
@@ -33,4 +36,4 @@ class MainPage implements Page {
   }
 }
 
-export default MainPage;
+export default MainPageView;
