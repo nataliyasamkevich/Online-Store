@@ -1,6 +1,6 @@
 import { Validatable } from '../base/base';
 
-function autoBind(target: any, name: string, descriptor: PropertyDescriptor) {
+function autoBind(target: Object, name: string, descriptor: PropertyDescriptor) {
   const originalMethod = descriptor.value;
 
   const newDescriptor: PropertyDescriptor = {
@@ -212,14 +212,14 @@ export class ValidateProjectInput {
       required: true,
       minLengthCharacters: 5,
       countWord: 3,
-      regexp: /^([0-9a-zA-Z]{5,}){2}[0-9a-zA-Z]{5,}/,
+      regexp: /^([0-9a-zA-Z]{5,} ){2}[0-9a-zA-Z]{5,}/,
     }
 
     const cardNumberValidatable: Validatable = {
       value: cardNumber,
       required: true,
       minLength: 19,
-      regexp: /^([0-9]{4}){3}[0-9]{4}$/,
+      regexp: /^([0-9]{4} ){3}[0-9]{4}$/,
     }
 
     const expirationDateValidatable: Validatable = {
