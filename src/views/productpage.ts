@@ -16,7 +16,7 @@ class ProductPage {
     const cards = cardsData.map((cardData, index) => {
       if (index == this.id) {
         const card = new ProductDetails(this.container, cardData);
-        return card.getElement();
+        return card.createElement();
       }
     });
   }

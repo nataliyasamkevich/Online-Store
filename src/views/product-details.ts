@@ -8,7 +8,7 @@ class ProductDetails {
   ) {
   }
 
-  getElement(): HTMLElement {
+  createElement(): HTMLElement {
     const navigationLink = document.createElement('div');
     navigationLink.classList.add('navigation__link');
 
@@ -96,14 +96,19 @@ class ProductDetails {
     categoryOptionEP.classList.add('category__option');
     categoryOptionEP.textContent = 'EP';
 
-    if (this.cardData.category === PerfumeСategory['EDP']) {
-      categoryOptionEDP.classList.add('category__option_active');
-    } else if (this.cardData.category === PerfumeСategory['EDT']) {
-      categoryOptionEDT.classList.add('category__option_active');
-    } else if (this.cardData.category === PerfumeСategory['EDC']) {
-      categoryOptionEDC.classList.add('category__option_active');
-    } else if (this.cardData.category === PerfumeСategory['EP']) {
-      categoryOptionEP.classList.add('category__option_active');
+    switch (this.cardData.category) {
+      case PerfumeСategory['EDP']:
+        categoryOptionEDP.classList.add('category__option_active');
+        break;
+      case PerfumeСategory['EDT']:
+        categoryOptionEDT.classList.add('category__option_active');
+        break;
+      case PerfumeСategory['EDC']:
+        categoryOptionEDC.classList.add('category__option_active');
+        break;
+      case PerfumeСategory['EP']:
+        categoryOptionEP.classList.add('category__option_active');
+        break;
     }
 
     const productStock = document.createElement('p');
