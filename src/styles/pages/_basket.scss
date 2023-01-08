@@ -1,0 +1,240 @@
+.cart__wrapper {
+  display: flex;
+  max-width: 1600px;
+  margin: 0 auto;
+  gap: 108px;
+}
+
+.title {
+  font: $font-product-title;
+  color: $font-color-base;
+  margin: 0 0 20px;
+}
+
+.product__item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  width: 1020px;
+  padding: 19px 0;
+  border-top: 1px solid $additional-color;
+  border-bottom: 1px solid $additional-color;
+}
+
+.item__number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+
+  font: $font-base;
+  color: $font-color-base;
+  border: 1px solid $font-color-base;
+}
+
+.item__description {
+  display: flex;
+  flex-grow: 1;
+  gap: 20px;
+}
+
+.item__photo {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+}
+
+.item__info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.item__brand-name {
+  font: $font-base;
+  color: $font-color-base;
+  margin: 14px 0 8px;
+}
+
+.item__volume {
+  font: $font-item-card-volume;
+  color: $font-color-sec;
+  margin: 0 0 26px;
+}
+
+.item__category {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.category__option-small {
+  font: $font-category-small;
+  color: $additional-color;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  box-sizing: border-box;
+  padding: 9px 4px 6px 5px;
+  border: 1px solid $additional-color;
+}
+
+.category__option_active {
+  color: $font-color-base;
+  border: 1px solid $font-color-base;
+}
+
+.item__stock {
+  font: $font-item-card-volume;
+  color: $font-color-sec;
+  margin: 0 0 -5px;
+}
+
+.item__count {
+  display: flex;
+  gap: 87px;
+}
+
+.item__price {
+  font: $font-base;
+  color: $font-color-base;
+  margin: 14px 0 0;
+}
+
+.amount__count {
+  display: flex;
+  margin: 14px 0 0;
+}
+
+.amount__option {
+  font: $font-base;
+  color: $font-color-base;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid $additional-color;
+  margin: 0 0 20px;
+}
+
+.page__counter {
+  display: flex;
+}
+
+.amount__option_value {
+  border: 1px solid $font-color-base;
+}
+
+.amount__option_minus,
+.amount__option_plus {
+  cursor: pointer;
+}
+
+.total__cart {
+width: 475px;
+}
+
+.settings-view {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.settings-view__container {
+  display: flex;
+  gap: 20px;
+}
+
+.amount__option_left,
+.amount__option_right {
+  color: $additional-color;
+  cursor: pointer;
+}
+
+.payment-info {
+  border: 1px solid $additional-color;
+}
+
+.payment-info__title {
+  margin: 0 0 40px;
+  padding: 20px 40px;
+  border-bottom: 1px solid $additional-color;
+}
+
+.payment-info__container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 40px;
+}
+
+.payment-info__text {
+  font: $font-items-found;
+  color: $font-color-base;
+  margin: 0;
+}
+
+.promo-code__container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 60px 0 40px;
+}
+
+.promo-code__text {
+  font: $font-product-text;
+  color: $font-color-base;
+  margin: 0 0 15px;
+}
+
+.promo-code__text span {
+  color: $font-color-decorative;
+}
+
+.input__container {
+  position: relative;
+  margin-bottom: 20px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 1px;
+    bottom: 10px;
+    left: 30px;
+    background: $additional-color;
+    z-index: 100;
+  }
+}
+
+.search-field__input {
+  height: 46px;
+  width: 338px;
+  padding: 0 60px 0 20px;
+}
+
+.checkbox__container {
+  position: absolute;
+  background: url('./assets/svg/checkbox.svg');
+  height: 24px;
+  width: 24px;
+  left: 294px;
+  top: 11px;
+}
+
+.promo-code__promos {
+  font: $font-promos;
+  color: $additional-color;
+  max-width: 263px;
+  margin: 0 0 99px;
+}
+
+.promo-code__promos span {
+  color: $font-color-base;
+}

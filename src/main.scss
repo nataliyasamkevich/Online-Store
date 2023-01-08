@@ -19,10 +19,12 @@
 
 @import './styles/pages/main-page';
 @import './styles/pages/product-details';
+@import './styles/pages/basket';
 
 @import 'nouislider/dist/nouislider.css';
 
 #webpack-dev-server-client-overlay {
   display: none;
 }
+
 //TODO: remove before release
