@@ -1,7 +1,7 @@
 import { Validatable } from '../base/base';
 
 function autoBind(
-  target: Object,
+  target: object,
   name: string,
   descriptor: PropertyDescriptor
 ) {
