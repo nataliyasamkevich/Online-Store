@@ -1,7 +1,7 @@
 import { Page } from '../base/base';
 
 import Catalog from './catalog';
-import Settings from './settings';
+import SettingsView from './settings';
 import FiltersView from './filters';
 
 class MainPageView implements Page {
@@ -14,7 +14,7 @@ class MainPageView implements Page {
 
     const settingsBar = document.createElement('div');
     settingsBar.classList.add('settings');
-    const settings = new Settings(settingsBar);
+    const settings = new SettingsView(settingsBar);
 
     const contentContainer = document.createElement('div');
     contentContainer.classList.add('content-container');

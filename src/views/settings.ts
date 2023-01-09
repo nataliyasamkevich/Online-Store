@@ -1,9 +1,17 @@
-class Settings {
+import SettingsController from '../controllers/settings';
+
+class SettingsView {
+  private controller: SettingsController;
+
   constructor(protected container: HTMLElement) {
+    this.controller = new SettingsController();
     this.draw();
+    this.setHandlers();
   }
 
   draw(): void {
+    this.container.innerHTML = '';
+
     const settingsContainer = document.createElement('div');
     settingsContainer.classList.add('settings__container');
 
@@ -15,8 +23,7 @@ class Settings {
 
     const itemsFoundNum = document.createElement('span');
     itemsFoundNum.classList.add('found__num');
-    itemsFoundNum.textContent = '62';
-    //TODO: check for available items amount
+    itemsFoundNum.textContent = `${this.controller.countItemsFound()}`;
 
     const controlsContainer = document.createElement('div');
     controlsContainer.classList.add('settings__controls', 'controls');
@@ -58,6 +65,9 @@ class Settings {
 
     const searchButton = document.createElement('div');
     searchButton.classList.add('search-button');
+    searchButton.addEventListener('click', () =>
+      this.controller.handleSearchItems(searchInput.value.trim())
+    );
 
     const resetButton = document.createElement('button');
     resetButton.classList.add('reset-button');
@@ -127,7 +137,11 @@ class Settings {
       sortMainField.textContent = e.target.textContent;
     }
   }
+
+  private setHandlers() {
+    window.addEventListener('popstate', () => this.draw());
+  }
 }
 
 //TODO: add search support for enter key press
-export default Settings;
+export default SettingsView;
