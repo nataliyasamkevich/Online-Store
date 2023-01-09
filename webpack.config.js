@@ -14,6 +14,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
+    clean: true,
   },
   devServer: {
     open: true,
@@ -23,6 +24,9 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html',
+      output: {
+        filename: '[contenthash].html'
+      }
     }),
     new CopyWebpackPlugin({
       patterns: [

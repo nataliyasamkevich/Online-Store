@@ -1,10 +1,12 @@
-import CardPage from './views/card';
-import Header from './views/header';
-import Footer from './views/footer';
+import * as utilities from './base/utilities';
 import Router from './base/router';
-import MainPage from './views/main-page';
 
-export const enum PageIds {
+import HeaderView from './views/header';
+import FooterView from './views/footer';
+
+import MainPageView from './views/main-page';
+
+const enum PageIds {
   MainPage = '',
   CardPage = 'card',
   ProductDetailsPage = 'product-details',
@@ -12,6 +14,9 @@ export const enum PageIds {
 
 class App {
   private static container: HTMLElement;
+  private static headerContainer: HTMLElement;
+  private static mainContainer: HTMLElement;
+  private static footerContainer: HTMLElement;
 
   static run(container: HTMLElement): void {
     App.container = container;
@@ -21,30 +26,41 @@ class App {
   }
 
   private static createLayout() {
-    const headerContainer = App.container.querySelector(
-      'header'
-    ) as HTMLElement;
-    const mainContainer = App.container.querySelector('main') as HTMLElement;
-    const footerContainer = App.container.querySelector(
-      'footer'
-    ) as HTMLElement;
-    const header = new Header(headerContainer, 0, 0);
-    const footer = new Footer(footerContainer);
-    const main = new MainPage(mainContainer);
+    App.headerContainer = utilities.AddElementWithClasses(
+      App.container,
+      'header',
+      ['header']
+    );
+
+    App.mainContainer = utilities.AddElementWithClasses(App.container, 'main', [
+      'main',
+    ]);
+
+    App.footerContainer = utilities.AddElementWithClasses(
+      App.container,
+      'footer',
+      ['footer']
+    );
+
+    new HeaderView(App.headerContainer);
+    new FooterView(App.footerContainer);
+
+    // const modalContainer = App.container.querySelector('.popup') as HTMLElement;
+    // const main = new MainPage(mainContainer);
+    // const modal = new ModalView(modalContainer);
   }
 
   private static setupRouter() {
-    const mainContainer = App.container.querySelector('main') as HTMLElement;
+    const mainPage = new MainPageView(App.mainContainer);
+    Router.addRoute(PageIds.MainPage, mainPage);
 
-    // const catalog = new Catalog(mainContainer);
-    // Router.addRoute('', catalog);
     // const product = new Product(mainContainer);
     // Router.addRoute('product', product);
     // const cart = new Cart(mainContainer);
     // Router.addRoute('cart', cart);
 
     //  const notFound = new NotFound(mainContainer);
-    // Router.startRouting(catalog);
+    Router.startRouting(mainPage);
   }
 }
 

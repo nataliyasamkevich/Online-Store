@@ -23,8 +23,10 @@
 }
 
 .brands__options {
+  max-height: 300px;
   display: flex;
   flex-direction: column;
+  overflow: scroll;
 }
 
 // Checkboxes

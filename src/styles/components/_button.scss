@@ -23,6 +23,11 @@
       background: $button-dark-hover-color;
     }
   }
+
+  &.temp {
+    color: $accent-color;
+    border: 1px solid $accent-color;
+  }
 }
 
 #reset {

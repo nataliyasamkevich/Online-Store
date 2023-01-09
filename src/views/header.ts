@@ -1,9 +1,8 @@
-class Header {
-  constructor(
-    protected container: HTMLElement,
-    protected sum: number,
-    protected itemsAmount: number
-  ) {
+class HeaderView {
+  private sum = 0;
+  private itemsAmount = 0;
+
+  constructor(protected container: HTMLElement) {
     this.draw();
   }
 
@@ -55,4 +54,4 @@ class Header {
   }
 }
 
-export default Header;
+export default HeaderView;
