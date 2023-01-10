@@ -46,21 +46,28 @@ class SettingsView {
   }
 
   private createSearchInput(): HTMLElement {
-    const searchContainer = document.createElement('form');
+    const searchContainer = document.createElement('div');
     searchContainer.classList.add('fields__search', 'search');
 
-    const inputContainer = document.createElement('div');
+    const inputContainer = document.createElement('form');
     inputContainer.classList.add('input__container');
 
     const searchInput = document.createElement('input');
     searchInput.classList.add('search__input', 'input');
     searchInput.type = 'search';
+    searchInput.name = 'search';
     searchInput.placeholder = 'Search for...';
+    searchInput.value = this.controller.getSearchValue();
 
     searchInput.addEventListener('input', () => {
       [resetButton, searchButton].forEach((button) =>
         button.classList.add('active')
       );
+    });
+
+    inputContainer.addEventListener('submit', (event) => {
+      event.preventDefault();
+      searchButton.click();
     });
 
     const searchButton = document.createElement('div');
@@ -73,9 +80,10 @@ class SettingsView {
     resetButton.classList.add('reset-button');
     resetButton.type = 'reset';
     resetButton.addEventListener('click', () => {
-      [resetButton, searchButton].forEach((button) =>
-        button.classList.remove('active')
-      );
+      [resetButton, searchButton].forEach((button) => {
+        searchInput.value = '';
+        button.classList.remove('active');
+      });
     });
 
     inputContainer.append(searchInput);

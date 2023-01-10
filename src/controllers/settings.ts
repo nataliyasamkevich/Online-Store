@@ -15,7 +15,7 @@ class SettingsController {
     return product.getProducts(this.filter).length;
   }
 
-  handleSearchItems(value: string) {
+  handleSearchItems(value: string): void {
     if (!value.length) return;
 
     const params = new URLSearchParams(window.location.search);
@@ -23,6 +23,12 @@ class SettingsController {
 
     history.pushState({}, '', '?' + params.toString() + location.hash);
     window.dispatchEvent(new PopStateEvent('popstate'));
+  }
+
+  getSearchValue(): string {
+    const params = new URLSearchParams(window.location.search);
+    const res = params.get(URLParameters['search']);
+    return res ? res : '';
   }
 }
 

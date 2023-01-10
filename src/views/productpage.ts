@@ -2,10 +2,7 @@ import ProductDetails from './product-details';
 import products from '../models/products';
 
 class ProductPage {
-  constructor(
-    protected container: HTMLElement,
-    protected id: number
-  ) {
+  constructor(protected container: HTMLElement, protected id: number) {
     this.draw();
   }
 
