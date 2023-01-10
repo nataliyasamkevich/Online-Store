@@ -104,17 +104,46 @@ class SettingsView {
     const optionList = document.createElement('div');
     optionList.classList.add('select__options');
 
-    const optionPriceHigh = document.createElement('div');
+    const optionPriceHigh = document.createElement('label');
     optionPriceHigh.textContent = 'Price: high to low';
 
-    const optionPriceLow = document.createElement('div');
+    const inputPriceHigh = document.createElement('input');
+    inputPriceHigh.type = 'radio';
+    inputPriceHigh.name = 'sort';
+    inputPriceHigh.dataset.type = 'sort';
+    inputPriceHigh.dataset.value = 'price-high-to-low';
+
+    const optionPriceLow = document.createElement('label');
     optionPriceLow.textContent = 'Price: low to high';
 
-    const optionPopulHigh = document.createElement('div');
+    const inputPriceLow = document.createElement('input');
+    inputPriceLow.type = 'radio';
+    inputPriceLow.name = 'sort';
+    inputPriceLow.dataset.type = 'sort';
+    inputPriceLow.dataset.value = 'price-low-to-high';
+
+    const optionPopulHigh = document.createElement('label');
     optionPopulHigh.textContent = 'Popularity: high to low';
 
-    const optionPopulLow = document.createElement('div');
+    const inputPopulHigh = document.createElement('input');
+    inputPopulHigh.type = 'radio';
+    inputPopulHigh.name = 'sort';
+    inputPopulHigh.dataset.type = 'sort';
+    inputPopulHigh.dataset.value = 'popularity-high-to-low';
+
+    const optionPopulLow = document.createElement('label');
     optionPopulLow.textContent = 'Popularity: low to high';
+
+    const inputPopulLow = document.createElement('input');
+    inputPopulLow.type = 'radio';
+    inputPopulLow.name = 'sort';
+    inputPopulLow.dataset.type = 'sort';
+    inputPopulLow.dataset.value = 'popularity-low-to-high';
+
+    optionPriceHigh.append(inputPriceHigh);
+    optionPriceLow.append(inputPriceLow);
+    optionPopulHigh.append(inputPopulHigh);
+    optionPopulLow.append(inputPopulLow);
 
     optionList.append(
       optionPriceHigh,
@@ -129,20 +158,29 @@ class SettingsView {
       );
     }
 
+    [inputPriceHigh, inputPriceLow, inputPopulHigh, inputPopulLow].forEach(
+      (input) =>
+        input.addEventListener('click', (e) =>
+          this.controller.handleSort(input.dataset.type, input.dataset.value)
+        )
+    );
+
     selectContainer.append(select, optionList);
     return selectContainer;
   }
 
   private handleDropdown(e: Event): void {
-    const sortMainField = this.container.querySelector('.select__input');
-    const sortOptions = this.container.querySelector('.select__options');
-    const selectBlock = this.container.querySelector('.select');
+    if (e.target == e.currentTarget) {
+      const sortMainField = this.container.querySelector('.select__input');
+      const sortOptions = this.container.querySelector('.select__options');
+      const selectBlock = this.container.querySelector('.select');
 
-    [sortMainField, sortOptions, selectBlock].forEach((elem) => {
-      if (elem) elem.classList.toggle('active');
-    });
-    if (sortMainField && e.target instanceof HTMLDivElement) {
-      sortMainField.textContent = e.target.textContent;
+      [sortMainField, sortOptions, selectBlock].forEach((elem) => {
+        if (elem) elem.classList.toggle('active');
+      });
+      if (sortMainField && e.target instanceof HTMLLabelElement) {
+        sortMainField.textContent = e.target.textContent;
+      }
     }
   }
 
@@ -151,5 +189,4 @@ class SettingsView {
   }
 }
 
-//TODO: add search support for enter key press
 export default SettingsView;

@@ -282,7 +282,7 @@ class FiltersView {
     buttonCopy.textContent = 'Copy link';
 
     buttonCopy.addEventListener('click', () => {
-      this.controller.copyLink;
+      this.controller.copyLink();
       buttonCopy.textContent = 'Link copied!';
       buttonCopy.classList.add('temp');
       setTimeout(() => {

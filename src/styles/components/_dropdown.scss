@@ -56,10 +56,15 @@
     display: block;
   }
 
-  & div {
+  & label {
+    display: block;
     padding: 12px 30px;
     border-bottom: 1px solid $font-color-base;
     cursor: pointer;
+
+    & input {
+      display: none;
+    }
 
     &:last-of-type {
       border-bottom: none;

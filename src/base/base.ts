@@ -55,6 +55,7 @@ enum URLParameters {
   stockMin = 'stockmin',
   stockMax = 'stockmax',
   search = 'search',
+  sort = 'sort',
 }
 
 export {

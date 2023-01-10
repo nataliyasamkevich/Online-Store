@@ -16,9 +16,12 @@ class SettingsController {
   }
 
   handleSearchItems(value: string): void {
-    if (!value.length) return;
-
     const params = new URLSearchParams(window.location.search);
+
+    if (!value.length) {
+      // TODO: reset search on empty string
+    }
+
     params.set(URLParameters['search'], value);
 
     history.pushState({}, '', '?' + params.toString() + location.hash);
@@ -29,6 +32,13 @@ class SettingsController {
     const params = new URLSearchParams(window.location.search);
     const res = params.get(URLParameters['search']);
     return res ? res : '';
+  }
+
+  handleSort(type?: string, value?: string) {
+    const params = new URLSearchParams(window.location.search);
+    const appliedSort = params.getAll(URLParameters['sort']);
+
+    params.delete(URLParameters['sort']);
   }
 }
 
