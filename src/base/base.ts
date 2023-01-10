@@ -27,6 +27,7 @@ type Filter = {
   brands?: string[];
   stock?: [number, number];
   price?: [number, number];
+  search?: string;
 };
 
 type FilterFields = keyof Filter;
@@ -53,6 +54,8 @@ enum URLParameters {
   priceMax = 'pricemax',
   stockMin = 'stockmin',
   stockMax = 'stockmax',
+  search = 'search',
+  sort = 'sort',
 }
 
 export {

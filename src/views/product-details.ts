@@ -2,11 +2,7 @@ import { PerfumeСategory, ItemInfo } from '../base/base';
 import { ModalView } from './modal';
 
 class ProductDetails {
-  constructor(
-    protected container: HTMLElement,
-    protected cardData: ItemInfo
-  ) {
-  }
+  constructor(protected container: HTMLElement, protected cardData: ItemInfo) {}
 
   createElement(): HTMLElement {
     const navigationLink = document.createElement('div');
@@ -37,7 +33,10 @@ class ProductDetails {
 
     const slides = document.createElement('div');
     slides.classList.add('slides');
-    slides.innerHTML = `${this.cardData.images.reduce((res, cur) => res + `<img class="slides__photo" src="${cur}">`, '')}`;
+    slides.innerHTML = `${this.cardData.images.reduce(
+      (res, cur) => res + `<img class="slides__photo" src="${cur}">`,
+      ''
+    )}`;
 
     const grandPhoto = document.createElement('div');
     grandPhoto.classList.add('grand-photo');
@@ -119,7 +118,11 @@ class ProductDetails {
     buttons.classList.add('buttons');
 
     const buttonAddToBag = document.createElement('button');
-    buttonAddToBag.classList.add('button', 'button__dark', 'button__add-to-bag');
+    buttonAddToBag.classList.add(
+      'button',
+      'button__dark',
+      'button__add-to-bag'
+    );
     buttonAddToBag.textContent = 'Add to bag';
 
     const buttonBuyNow = document.createElement('button');
@@ -137,7 +140,15 @@ class ProductDetails {
     aboutText.classList.add('about__text');
     aboutText.textContent = `${this.cardData.description}`;
 
-    navigationLink.append(linkHome, '/', linkCategory, '/', linkBrand, '/', linkName);
+    navigationLink.append(
+      linkHome,
+      '/',
+      linkCategory,
+      '/',
+      linkBrand,
+      '/',
+      linkName
+    );
     productDetail.append(productGallery, productDescription);
     productGallery.append(slides, grandPhoto);
     grandPhoto.append(grandPhotoActive);
@@ -148,9 +159,14 @@ class ProductDetails {
     productTitle.append(productBrand, productName);
     productDetails.append(productPrice, productVolume);
 
-    productCategory.append(categoryOptionEDP, categoryOptionEDT, categoryOptionEDC, categoryOptionEP);
+    productCategory.append(
+      categoryOptionEDP,
+      categoryOptionEDT,
+      categoryOptionEDC,
+      categoryOptionEP
+    );
 
-    buttons.append(buttonAddToBag, buttonBuyNow)
+    buttons.append(buttonAddToBag, buttonBuyNow);
     about.append(aboutTitle, aboutText);
 
     this.container.append(navigationLink, productDetail);
@@ -183,11 +199,13 @@ class ProductDetails {
     document.querySelectorAll('.slides__photo').forEach((item) => {
       item.addEventListener('click', (e) => {
         const { target } = e;
-        const grandPhoto = <HTMLImageElement>document.querySelector('.grand-photo__active');
+        const grandPhoto = <HTMLImageElement>(
+          document.querySelector('.grand-photo__active')
+        );
         if (target instanceof HTMLImageElement) {
           grandPhoto.src = target.src;
         }
-      })
+      });
     });
   }
 }

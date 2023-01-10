@@ -93,6 +93,23 @@ class Product {
       }
       return true;
     },
+
+    search: (filterData: Filter) => (item: ItemInfo) => {
+      const search = filterData['search'];
+
+      if (search?.length) {
+        return (
+          item.brand.toLowerCase().search(search) > -1 ||
+          item.name.toLowerCase().search(search) > -1 ||
+          item.volume.toString() === search ||
+          item.description.search(search) > -1 ||
+          item.category.toLowerCase().search(search) > -1 ||
+          item.price.toString() === search
+        );
+      }
+
+      return true;
+    },
   };
 }
 

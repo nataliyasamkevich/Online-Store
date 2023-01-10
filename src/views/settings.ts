@@ -1,9 +1,17 @@
-class Settings {
+import SettingsController from '../controllers/settings';
+
+class SettingsView {
+  private controller: SettingsController;
+
   constructor(protected container: HTMLElement) {
+    this.controller = new SettingsController();
     this.draw();
+    this.setHandlers();
   }
 
   draw(): void {
+    this.container.innerHTML = '';
+
     const settingsContainer = document.createElement('div');
     settingsContainer.classList.add('settings__container');
 
@@ -15,8 +23,7 @@ class Settings {
 
     const itemsFoundNum = document.createElement('span');
     itemsFoundNum.classList.add('found__num');
-    itemsFoundNum.textContent = '62';
-    //TODO: check for available items amount
+    itemsFoundNum.textContent = `${this.controller.countItemsFound()}`;
 
     const controlsContainer = document.createElement('div');
     controlsContainer.classList.add('settings__controls', 'controls');
@@ -39,16 +46,18 @@ class Settings {
   }
 
   private createSearchInput(): HTMLElement {
-    const searchContainer = document.createElement('form');
+    const searchContainer = document.createElement('div');
     searchContainer.classList.add('fields__search', 'search');
 
-    const inputContainer = document.createElement('div');
+    const inputContainer = document.createElement('form');
     inputContainer.classList.add('input__container');
 
     const searchInput = document.createElement('input');
     searchInput.classList.add('search__input', 'input');
     searchInput.type = 'search';
+    searchInput.name = 'search';
     searchInput.placeholder = 'Search for...';
+    searchInput.value = this.controller.getSearchValue();
 
     searchInput.addEventListener('input', () => {
       [resetButton, searchButton].forEach((button) =>
@@ -56,16 +65,25 @@ class Settings {
       );
     });
 
+    inputContainer.addEventListener('submit', (event) => {
+      event.preventDefault();
+      searchButton.click();
+    });
+
     const searchButton = document.createElement('div');
     searchButton.classList.add('search-button');
+    searchButton.addEventListener('click', () =>
+      this.controller.handleSearchItems(searchInput.value.trim())
+    );
 
     const resetButton = document.createElement('button');
     resetButton.classList.add('reset-button');
     resetButton.type = 'reset';
     resetButton.addEventListener('click', () => {
-      [resetButton, searchButton].forEach((button) =>
-        button.classList.remove('active')
-      );
+      [resetButton, searchButton].forEach((button) => {
+        searchInput.value = '';
+        button.classList.remove('active');
+      });
     });
 
     inputContainer.append(searchInput);
@@ -86,17 +104,46 @@ class Settings {
     const optionList = document.createElement('div');
     optionList.classList.add('select__options');
 
-    const optionPriceHigh = document.createElement('div');
+    const optionPriceHigh = document.createElement('label');
     optionPriceHigh.textContent = 'Price: high to low';
 
-    const optionPriceLow = document.createElement('div');
+    const inputPriceHigh = document.createElement('input');
+    inputPriceHigh.type = 'radio';
+    inputPriceHigh.name = 'sort';
+    inputPriceHigh.dataset.type = 'sort';
+    inputPriceHigh.dataset.value = 'price-high-to-low';
+
+    const optionPriceLow = document.createElement('label');
     optionPriceLow.textContent = 'Price: low to high';
 
-    const optionPopulHigh = document.createElement('div');
+    const inputPriceLow = document.createElement('input');
+    inputPriceLow.type = 'radio';
+    inputPriceLow.name = 'sort';
+    inputPriceLow.dataset.type = 'sort';
+    inputPriceLow.dataset.value = 'price-low-to-high';
+
+    const optionPopulHigh = document.createElement('label');
     optionPopulHigh.textContent = 'Popularity: high to low';
 
-    const optionPopulLow = document.createElement('div');
+    const inputPopulHigh = document.createElement('input');
+    inputPopulHigh.type = 'radio';
+    inputPopulHigh.name = 'sort';
+    inputPopulHigh.dataset.type = 'sort';
+    inputPopulHigh.dataset.value = 'popularity-high-to-low';
+
+    const optionPopulLow = document.createElement('label');
     optionPopulLow.textContent = 'Popularity: low to high';
+
+    const inputPopulLow = document.createElement('input');
+    inputPopulLow.type = 'radio';
+    inputPopulLow.name = 'sort';
+    inputPopulLow.dataset.type = 'sort';
+    inputPopulLow.dataset.value = 'popularity-low-to-high';
+
+    optionPriceHigh.append(inputPriceHigh);
+    optionPriceLow.append(inputPriceLow);
+    optionPopulHigh.append(inputPopulHigh);
+    optionPopulLow.append(inputPopulLow);
 
     optionList.append(
       optionPriceHigh,
@@ -111,23 +158,35 @@ class Settings {
       );
     }
 
+    [inputPriceHigh, inputPriceLow, inputPopulHigh, inputPopulLow].forEach(
+      (input) =>
+        input.addEventListener('click', (e) =>
+          this.controller.handleSort(input.dataset.type, input.dataset.value)
+        )
+    );
+
     selectContainer.append(select, optionList);
     return selectContainer;
   }
 
   private handleDropdown(e: Event): void {
-    const sortMainField = this.container.querySelector('.select__input');
-    const sortOptions = this.container.querySelector('.select__options');
-    const selectBlock = this.container.querySelector('.select');
+    if (e.target == e.currentTarget) {
+      const sortMainField = this.container.querySelector('.select__input');
+      const sortOptions = this.container.querySelector('.select__options');
+      const selectBlock = this.container.querySelector('.select');
 
-    [sortMainField, sortOptions, selectBlock].forEach((elem) => {
-      if (elem) elem.classList.toggle('active');
-    });
-    if (sortMainField && e.target instanceof HTMLDivElement) {
-      sortMainField.textContent = e.target.textContent;
+      [sortMainField, sortOptions, selectBlock].forEach((elem) => {
+        if (elem) elem.classList.toggle('active');
+      });
+      if (sortMainField && e.target instanceof HTMLLabelElement) {
+        sortMainField.textContent = e.target.textContent;
+      }
     }
+  }
+
+  private setHandlers() {
+    window.addEventListener('popstate', () => this.draw());
   }
 }
 
-//TODO: add search support for enter key press
-export default Settings;
+export default SettingsView;
