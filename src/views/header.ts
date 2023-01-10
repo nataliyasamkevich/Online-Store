@@ -17,7 +17,7 @@ class HeaderView {
 
     const logo = document.createElement('img');
     logo.classList.add('header__logo', 'logo');
-    logo.src = './../../assets/svg/logo.svg';
+    logo.src = './assets/svg/logo.svg';
 
     const cartBlock = document.createElement('div');
     cartBlock.classList.add('header__cart', 'cart');
@@ -36,7 +36,7 @@ class HeaderView {
     const cartButton = document.createElement('div');
     cartButton.classList.add('cart-button');
     cartButton.style.background =
-      'url(./../../assets/svg/bag-empty.svg) no-repeat center';
+      "url('./assets/svg/bag-empty.svg') no-repeat center";
 
     const cartAmount = document.createElement('div');
     cartAmount.classList.add('cart-button__amount');

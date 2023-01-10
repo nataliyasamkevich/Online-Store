@@ -59,13 +59,6 @@ const config = {
           filename: 'assets/fonts/[name][ext]',
         },
       },
-      {
-        test: /\.(jpe?g|png|webp|gif|svg)$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'assets/images/[ext]/[name][ext]',
-        },
-      },
 
       // Add your rules for custom modules here
       // Learn more about loaders from https://webpack.js.org/loaders/

@@ -34,7 +34,7 @@ class SettingsView {
     const viewContainer = document.createElement('div');
     viewContainer.classList.add('controls__view', 'view');
     viewContainer.style.background =
-      'url(./../../assets/svg/view-grid.svg) no-repeat center';
+      "url('./assets/svg/view-grid.svg') no-repeat center";
 
     this.createSearchInput();
     fieldsContainer.append(this.createSearchInput(), this.createDropdown());
