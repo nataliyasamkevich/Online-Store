@@ -1,4 +1,4 @@
-import { Filter, URLParameters, sortOrder } from '../base/base';
+import { Filter, URLParameters } from '../base/base';
 
 export function AddElementWithClasses(
   container: HTMLElement,

@@ -33,16 +33,51 @@ class SettingsView {
 
     const viewContainer = document.createElement('div');
     viewContainer.classList.add('controls__view', 'view');
-    viewContainer.style.background =
-      "url('./assets/svg/view-grid.svg') no-repeat center";
 
-    this.createSearchInput();
-    fieldsContainer.append(this.createSearchInput(), this.createDropdown());
-    controlsContainer.append(fieldsContainer, viewContainer);
-    itemsFoundContainer.append(itemsFound, itemsFoundNum);
-    settingsContainer.append(itemsFoundContainer, controlsContainer);
+    const currentView = this.controller.getActiveView();
 
-    this.container.append(settingsContainer);
+    if (currentView) {
+      switch (currentView) {
+        case 'grid':
+          viewContainer.dataset.type = 'grid';
+          viewContainer.classList.add('view_grid');
+          viewContainer.style.background =
+            "url('./assets/svg/view-grid.svg') no-repeat center";
+          break;
+
+        case 'list':
+          viewContainer.dataset.type = 'list';
+          viewContainer.classList.add('view_list');
+          viewContainer.style.background =
+            "url('./assets/svg/view-list.svg') no-repeat center";
+          break;
+      }
+
+      viewContainer.addEventListener('click', () => {
+        const type = viewContainer.dataset.type;
+        if (type) {
+          switch (type) {
+            case 'grid':
+              this.controller.handleView('list');
+              break;
+            case 'list':
+              this.controller.handleView('grid');
+              break;
+
+            default:
+              break;
+          }
+        }
+      });
+
+      this.createSearchInput();
+      fieldsContainer.append(this.createSearchInput(), this.createDropdown());
+      controlsContainer.append(fieldsContainer, viewContainer);
+      itemsFoundContainer.append(itemsFound, itemsFoundNum);
+      settingsContainer.append(itemsFoundContainer, controlsContainer);
+
+      this.container.append(settingsContainer);
+    }
   }
 
   private createSearchInput(): HTMLElement {
@@ -155,7 +190,7 @@ class SettingsView {
     );
 
     for (let i = 0; i < optionList.children.length; i++) {
-      optionList.children[i].addEventListener('click', (e) => {
+      optionList.children[i].addEventListener('click', () => {
         const input = <HTMLElement>optionList.children[i].children[0];
         const attrValue = input.dataset.value;
         if (attrValue) {

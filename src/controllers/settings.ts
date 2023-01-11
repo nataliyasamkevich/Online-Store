@@ -77,6 +77,22 @@ class SettingsController {
     history.pushState({}, '', '?' + params.toString() + location.hash);
     window.dispatchEvent(new PopStateEvent('popstate'));
   }
+
+  handleView(type: string) {
+    const params = new URLSearchParams(window.location.search);
+
+    params.set(URLParameters['view'], type);
+
+    history.pushState({}, '', '?' + params.toString() + location.hash);
+    window.dispatchEvent(new PopStateEvent('popstate'));
+    console.log(22);
+  }
+
+  getActiveView(): string | null {
+    const params = new URLSearchParams(window.location.search);
+    const res = params.get(URLParameters['view']);
+    return res ? res : null;
+  }
 }
 
 export default SettingsController;

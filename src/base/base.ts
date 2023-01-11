@@ -63,6 +63,7 @@ enum URLParameters {
   stockMax = 'stockmax',
   search = 'search',
   sort = 'sort',
+  view = 'view',
 }
 
 export {
