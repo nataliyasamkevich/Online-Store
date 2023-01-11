@@ -1,0 +1,18 @@
+.catalog {
+  width: 76%;
+  flex-grow: 1;
+  display: grid;
+  margin-bottom: 130px;
+}
+
+.catalog_grid {
+  gap: 80px 30px;
+  grid-template-rows: minmax(532px, min-content);
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.catalog_list {
+  gap: 80px 60px;
+  grid-template-rows: minmax(340px, min-content);
+  grid-template-columns: repeat(2, 1fr);
+}

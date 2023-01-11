@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "module": "ES6",
+    "target": "ES5",
+    "allowJs": true,
+    "moduleResolution": "Node",
+    "experimentalDecorators": true,
+  },
+  "files": ["src/index.ts"],
+  "exclude": ["node_modules"],
+}
