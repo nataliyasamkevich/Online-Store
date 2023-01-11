@@ -43,10 +43,9 @@ class Catalog {
         case 'list':
           this.container.classList.add('catalog_list');
           break;
-
-        default:
-          break;
       }
+    } else {
+      this.container.classList.add('catalog_grid');
     }
 
     const cardsData = this.controller.getProducts();

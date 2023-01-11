@@ -52,32 +52,37 @@ class SettingsView {
             "url('./assets/svg/view-list.svg') no-repeat center";
           break;
       }
-
-      viewContainer.addEventListener('click', () => {
-        const type = viewContainer.dataset.type;
-        if (type) {
-          switch (type) {
-            case 'grid':
-              this.controller.handleView('list');
-              break;
-            case 'list':
-              this.controller.handleView('grid');
-              break;
-
-            default:
-              break;
-          }
-        }
-      });
-
-      this.createSearchInput();
-      fieldsContainer.append(this.createSearchInput(), this.createDropdown());
-      controlsContainer.append(fieldsContainer, viewContainer);
-      itemsFoundContainer.append(itemsFound, itemsFoundNum);
-      settingsContainer.append(itemsFoundContainer, controlsContainer);
-
-      this.container.append(settingsContainer);
+    } else {
+      viewContainer.dataset.type = 'grid';
+      viewContainer.classList.add('view_grid');
+      viewContainer.style.background =
+        "url('./assets/svg/view-grid.svg') no-repeat center";
     }
+
+    viewContainer.addEventListener('click', () => {
+      const type = viewContainer.dataset.type;
+      if (type) {
+        switch (type) {
+          case 'grid':
+            this.controller.handleView('list');
+            break;
+          case 'list':
+            this.controller.handleView('grid');
+            break;
+          default:
+            break;
+        }
+      }
+    });
+
+    this.createSearchInput();
+    fieldsContainer.append(this.createSearchInput(), this.createDropdown());
+    controlsContainer.append(fieldsContainer, viewContainer);
+    itemsFoundContainer.append(itemsFound, itemsFoundNum);
+    settingsContainer.append(itemsFoundContainer, controlsContainer);
+
+    this.container.append(settingsContainer);
+    console.dir(settingsContainer);
   }
 
   private createSearchInput(): HTMLElement {
