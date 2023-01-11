@@ -15,30 +15,67 @@ class SettingsController {
     return product.getProducts(this.filter).length;
   }
 
-  handleSearchItems(value: string): void {
-    const params = new URLSearchParams(window.location.search);
-
-    if (!value.length) {
-      // TODO: reset search on empty string
-    }
-
-    params.set(URLParameters['search'], value);
-
-    history.pushState({}, '', '?' + params.toString() + location.hash);
-    window.dispatchEvent(new PopStateEvent('popstate'));
-  }
-
   getSearchValue(): string {
     const params = new URLSearchParams(window.location.search);
     const res = params.get(URLParameters['search']);
     return res ? res : '';
   }
 
-  handleSort(type?: string, value?: string) {
+  handleSearchItems(value: string): void {
     const params = new URLSearchParams(window.location.search);
-    const appliedSort = params.getAll(URLParameters['sort']);
 
-    params.delete(URLParameters['sort']);
+    if (!value.length) {
+      params.delete(URLParameters['search']);
+    } else {
+      params.set(URLParameters['search'], value);
+    }
+
+    history.pushState({}, '', '?' + params.toString() + location.hash);
+    window.dispatchEvent(new PopStateEvent('popstate'));
+  }
+
+  getSortValue(): string | null {
+    const params = new URLSearchParams(window.location.search);
+    const resKey = params.get(URLParameters['sort']);
+    let res: string | null;
+
+    switch (resKey) {
+      case 'price-high-to-low':
+        res = 'Price: high to low';
+        break;
+
+      case 'price-low-to-high':
+        res = 'Price: low to high';
+        break;
+
+      case 'popularity-high-to-low':
+        res = 'Popularity: high to low';
+        break;
+
+      case 'popularity-low-to-high':
+        res = 'Popularity: low to high';
+        break;
+
+      default:
+        res = null;
+        break;
+    }
+    return res;
+  }
+
+  getActiveSort(): string | null {
+    const params = new URLSearchParams(window.location.search);
+    const res = params.get(URLParameters['sort']);
+    return res ? res : null;
+  }
+
+  handleSort(value: string) {
+    const params = new URLSearchParams(window.location.search);
+
+    params.set(URLParameters['sort'], value);
+
+    history.pushState({}, '', '?' + params.toString() + location.hash);
+    window.dispatchEvent(new PopStateEvent('popstate'));
   }
 }
 

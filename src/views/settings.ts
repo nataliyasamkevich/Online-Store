@@ -97,7 +97,9 @@ class SettingsView {
 
     const select = document.createElement('div');
     select.classList.add('select__input');
-    select.textContent = 'Sort by';
+
+    const actualValue = this.controller.getSortValue() || 'Sort by';
+    select.textContent = actualValue;
 
     select.addEventListener('click', (e) => this.handleDropdown(e));
 
@@ -153,17 +155,14 @@ class SettingsView {
     );
 
     for (let i = 0; i < optionList.children.length; i++) {
-      optionList.children[i].addEventListener('click', (e) =>
-        this.handleDropdown(e)
-      );
+      optionList.children[i].addEventListener('click', (e) => {
+        const input = <HTMLElement>optionList.children[i].children[0];
+        const attrValue = input.dataset.value;
+        if (attrValue) {
+          this.controller.handleSort(attrValue);
+        }
+      });
     }
-
-    [inputPriceHigh, inputPriceLow, inputPopulHigh, inputPopulLow].forEach(
-      (input) =>
-        input.addEventListener('click', (e) =>
-          this.controller.handleSort(input.dataset.type, input.dataset.value)
-        )
-    );
 
     selectContainer.append(select, optionList);
     return selectContainer;
