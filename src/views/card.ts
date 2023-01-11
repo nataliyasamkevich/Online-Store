@@ -5,7 +5,7 @@ class Card {
 
   getElement(): HTMLElement {
     const cardContainer = document.createElement('div');
-    cardContainer.classList.add('card', 'card_grid');
+    cardContainer.classList.add('card');
 
     const cardImageContainer = document.createElement('div');
     cardImageContainer.classList.add('card__image');
@@ -25,6 +25,10 @@ class Card {
     const name = document.createElement('div');
     name.classList.add('card__name');
     name.textContent = `${this.cardData.name}`;
+
+    const cardDescription = document.createElement('div');
+    cardDescription.classList.add('card__description');
+    cardDescription.textContent = `${this.cardData.description}`;
 
     const cardOptions = document.createElement('div');
     cardOptions.classList.add('card__options');
@@ -47,7 +51,7 @@ class Card {
     cardTitle.append(brand, name);
     cardDetails.append(volume, price);
     cardOptions.append(cardDetails, button);
-    cardInfo.append(cardTitle, cardOptions);
+    cardInfo.append(cardTitle, cardDescription, cardOptions);
 
     cardContainer.append(cardImageContainer, cardInfo);
 

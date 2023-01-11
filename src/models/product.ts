@@ -3,9 +3,6 @@ import itemsInfo from '../data/items-info';
 
 class Product {
   private data = itemsInfo;
-  constructor() {
-    //
-  }
 
   getProducts(filter: Filter): ItemInfo[] {
     let result = this.data;
@@ -15,6 +12,32 @@ class Product {
       const func = Product.filterMap[key];
       if (func) {
         result = result.filter(func(filter));
+      }
+    }
+
+    const order = filter.order;
+    if (order) {
+      switch (order) {
+        case 'price-high-to-low':
+          result.sort((a, b) => b.price - a.price);
+          break;
+
+        case 'price-low-to-high':
+          result.sort((a, b) => a.price - b.price);
+          break;
+
+        // '1' if used for the most popular products, '5' otherwise is used for the least popular products
+        // see details at src/data/items-info.ts
+        case 'popularity-high-to-low':
+          result.sort((a, b) => a.popularity - b.popularity);
+          break;
+
+        case 'popularity-low-to-high':
+          result.sort((a, b) => b.popularity - a.popularity);
+          break;
+
+        default:
+          break;
       }
     }
     return result;

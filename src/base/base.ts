@@ -22,12 +22,19 @@ type ItemInfo = {
   images: string[];
 };
 
+type SortOrder =
+  | 'price-high-to-low'
+  | 'price-low-to-high'
+  | 'popularity-high-to-low'
+  | 'popularity-low-to-high';
+
 type Filter = {
   categories?: string[];
   brands?: string[];
   stock?: [number, number];
   price?: [number, number];
   search?: string;
+  order?: string;
 };
 
 type FilterFields = keyof Filter;
@@ -56,11 +63,13 @@ enum URLParameters {
   stockMax = 'stockmax',
   search = 'search',
   sort = 'sort',
+  view = 'view',
 }
 
 export {
   PerfumeСategory,
   ItemInfo,
+  SortOrder as sortOrder,
   Filter,
   FilterFields,
   Page,

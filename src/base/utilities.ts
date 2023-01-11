@@ -12,7 +12,7 @@ export function AddElementWithClasses(
   return el;
 }
 
-export function updateFilter(filter: Filter) {
+export function updateFilter(filter: Filter): void {
   const params = new URLSearchParams(window.location.search);
 
   filter.categories = params.getAll(URLParameters['categories']);
@@ -29,5 +29,12 @@ export function updateFilter(filter: Filter) {
   const searchTerm = params.get(URLParameters['search']);
   if (searchTerm) {
     filter.search = searchTerm;
+  } else {
+    filter.search = '';
+  }
+
+  const sortTerm = params.get(URLParameters['sort']);
+  if (sortTerm) {
+    filter.order = sortTerm;
   }
 }

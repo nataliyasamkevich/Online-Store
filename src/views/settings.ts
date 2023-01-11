@@ -33,8 +33,47 @@ class SettingsView {
 
     const viewContainer = document.createElement('div');
     viewContainer.classList.add('controls__view', 'view');
-    viewContainer.style.background =
-      "url('./assets/svg/view-grid.svg') no-repeat center";
+
+    const currentView = this.controller.getActiveView();
+
+    if (currentView) {
+      switch (currentView) {
+        case 'grid':
+          viewContainer.dataset.type = 'grid';
+          viewContainer.classList.add('view_grid');
+          viewContainer.style.background =
+            "url('./assets/svg/view-grid.svg') no-repeat center";
+          break;
+
+        case 'list':
+          viewContainer.dataset.type = 'list';
+          viewContainer.classList.add('view_list');
+          viewContainer.style.background =
+            "url('./assets/svg/view-list.svg') no-repeat center";
+          break;
+      }
+    } else {
+      viewContainer.dataset.type = 'grid';
+      viewContainer.classList.add('view_grid');
+      viewContainer.style.background =
+        "url('./assets/svg/view-grid.svg') no-repeat center";
+    }
+
+    viewContainer.addEventListener('click', () => {
+      const type = viewContainer.dataset.type;
+      if (type) {
+        switch (type) {
+          case 'grid':
+            this.controller.handleView('list');
+            break;
+          case 'list':
+            this.controller.handleView('grid');
+            break;
+          default:
+            break;
+        }
+      }
+    });
 
     this.createSearchInput();
     fieldsContainer.append(this.createSearchInput(), this.createDropdown());
@@ -43,6 +82,7 @@ class SettingsView {
     settingsContainer.append(itemsFoundContainer, controlsContainer);
 
     this.container.append(settingsContainer);
+    console.dir(settingsContainer);
   }
 
   private createSearchInput(): HTMLElement {
@@ -97,7 +137,9 @@ class SettingsView {
 
     const select = document.createElement('div');
     select.classList.add('select__input');
-    select.textContent = 'Sort by';
+
+    const actualValue = this.controller.getSortValue() || 'Sort by';
+    select.textContent = actualValue;
 
     select.addEventListener('click', (e) => this.handleDropdown(e));
 
@@ -153,17 +195,14 @@ class SettingsView {
     );
 
     for (let i = 0; i < optionList.children.length; i++) {
-      optionList.children[i].addEventListener('click', (e) =>
-        this.handleDropdown(e)
-      );
+      optionList.children[i].addEventListener('click', () => {
+        const input = <HTMLElement>optionList.children[i].children[0];
+        const attrValue = input.dataset.value;
+        if (attrValue) {
+          this.controller.handleSort(attrValue);
+        }
+      });
     }
-
-    [inputPriceHigh, inputPriceLow, inputPopulHigh, inputPopulLow].forEach(
-      (input) =>
-        input.addEventListener('click', (e) =>
-          this.controller.handleSort(input.dataset.type, input.dataset.value)
-        )
-    );
 
     selectContainer.append(select, optionList);
     return selectContainer;

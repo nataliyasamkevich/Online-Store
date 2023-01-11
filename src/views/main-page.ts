@@ -5,9 +5,7 @@ import SettingsView from './settings';
 import FiltersView from './filters';
 
 class MainPageView implements Page {
-  constructor(protected container: HTMLElement) {
-    //this.draw();
-  }
+  constructor(protected container: HTMLElement) {}
 
   draw(): void {
     this.container.innerHTML = '';
